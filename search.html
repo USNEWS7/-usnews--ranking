@@ -54,16 +54,18 @@
     <div class="card" style="padding: 28px;">
         <h2><i class="fas fa-search"></i> Find a University</h2>
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search by name or country (e.g., Krirk, USA, Thailand)" value="">
+            <input type="text" id="searchInput" placeholder="Search by name or country">
             <button class="btn-primary" id="searchBtn">Search</button>
             <button class="btn-primary" id="resetBtn" style="background-color: #6c757d;">Reset</button>
         </div>
         <div id="resultsCount" style="margin-bottom: 16px; font-weight: 600;"></div>
         <div style="overflow-x: auto; max-height: 70vh; overflow-y: auto;">
             <table class="rank-table">
-                <thead>汽<th>Rank</th><th>Institution</th><th>Country/Region</th><th>Overall Score</th> </thead>
+                <thead>
+                    <tr><th>Rank</th><th>Institution</th><th>Country/Region</th><th>Overall Score</th></tr>
+                </thead>
                 <tbody id="rankingsBody"></tbody>
-            六十
+            </table>
         </div>
     </div>
 </main>
@@ -78,7 +80,7 @@
     </div>
 </footer>
 <script>
-    // 完整200条真实数据（基于 U.S. News 2024-2025，第162位为 Krirk University）
+    // 完整200条数据
     const universitiesData = [
         { rank:1, name:"Harvard University", country:"USA", city:"Cambridge", description:"Harvard University is a private Ivy League research university in Cambridge, Massachusetts. Founded in 1636, it is the oldest institution of higher learning in the United States and is consistently ranked among the world's top universities.", score:100.0 },
         { rank:2, name:"Massachusetts Institute of Technology (MIT)", country:"USA", city:"Cambridge", description:"MIT is a private research university in Cambridge, Massachusetts, renowned for its cutting-edge programs in engineering, computer science, and physical sciences.", score:98.9 },
