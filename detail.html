@@ -63,7 +63,7 @@
     </div>
 </footer>
 <script>
-    // 完整200条数据（与 search.html 完全一致）
+    // 完整200条数据（与 search.html 完全一致，内嵌确保独立运行）
     const universitiesData = [
         { rank:1, name:"Harvard University", country:"USA", city:"Cambridge", description:"Harvard University is a private Ivy League research university in Cambridge, Massachusetts. Founded in 1636, it is the oldest institution of higher learning in the United States and is consistently ranked among the world's top universities.", score:100.0 },
         { rank:2, name:"Massachusetts Institute of Technology (MIT)", country:"USA", city:"Cambridge", description:"MIT is a private research university in Cambridge, Massachusetts, renowned for its cutting-edge programs in engineering, computer science, and physical sciences.", score:98.9 },
@@ -270,6 +270,7 @@
     function getSchoolByRank(rank) {
         return universitiesData.find(s => s.rank == rank);
     }
+
     function renderDetail() {
         const urlParams = new URLSearchParams(window.location.search);
         const rank = urlParams.get('rank');
