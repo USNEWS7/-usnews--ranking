@@ -49,9 +49,9 @@
     <div class="container nav-container">
         <div class="logo"><h1>U.S. NEWS <span>Education</span></h1></div>
         <div class="nav-links">
-            Home
-            Search Rankings
-            About Rankings
+            <a href="index.html" class="active" id="nav-home">Home</a>
+            <a href="search.html" id="nav-search">Search Rankings</a>
+            <a href="#" id="nav-about">About Rankings</a>
         </div>
     </div>
 </div>
@@ -59,9 +59,9 @@
     <div class="hero">
         <div class="container">
             <h2>2026 Best Global Universities Rankings</h2>
-            <p>Assessing 2,250 institutions across 104 countries and regions</p >
+            <p>Assessing 2,250 institutions across 104 countries and regions</p>
             <div style="margin-top: 32px;">
-                Explore Full Rankings <i class="fas fa-arrow-right"></i>
+                <a href="search.html" class="btn-primary" style="background: white; color: #003b6f;">Explore Full Rankings <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
@@ -69,7 +69,7 @@
         <div class="card" style="padding: 24px; margin-bottom: 40px;">
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <h3><i class="fas fa-trophy" style="color: #ffb81c;"></i> Global Top 10 Universities</h3>
-                Full Rankings →
+                <a href="search.html" style="font-size: 0.9rem;">Full Rankings →</a>
             </div>
             <div style="overflow-x: auto;">
                 <table class="rank-table" style="margin-top: 20px;">
@@ -97,11 +97,11 @@
 <footer class="footer">
     <div class="container">
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-            <div><h3 style="color:white">U.S. News</h3><p>Global authority in higher education rankings and insights.</p ></div>
-            <div><h4>2026 Rankings</h4><p>© 2025 U.S. News & World Report L.P.</p ></div>
+            <div><h3 style="color:white">U.S. News</h3><p>Global authority in higher education rankings and insights.</p></div>
+            <div><h4>2026 Rankings</h4><p>© 2025 U.S. News & World Report L.P.</p></div>
         </div>
         <hr style="margin: 24px 0; border-color: #334155;">
-        <p style="text-align: center;">2026 Best Global Universities Rankings · Data sourced from U.S. News and World Report methodology.</p >
+        <p style="text-align: center;">2026 Best Global Universities Rankings · Data sourced from U.S. News and World Report methodology.</p>
     </div>
 </footer>
 <script>
@@ -126,7 +126,7 @@
                     <td>${s.name}\\
                     <td>${s.country}\\
                     <td>${s.score}\\
-                  </tr>
+                </tr>
             `).join('');
         }
     }
