@@ -88,7 +88,7 @@
         <div class="card" style="padding: 28px; text-align: center; background: #f1f5f9;">
             <h3>Find Your Dream University</h3>
             <div class="search-box" style="max-width: 500px; margin: 20px auto 0;">
-                <input type="text" id="homeSearchInput" placeholder="Enter university name (e.g., Krirk, Harvard)">
+                <input type="text" id="homeSearchInput" placeholder="Enter university name or country">
                 <button class="btn-primary" id="homeSearchBtn">Search</button>
             </div>
         </div>
@@ -122,23 +122,30 @@
         if(tbody) {
             tbody.innerHTML = top10.map(s => `
                 <tr onclick="window.location='detail.html?rank=${s.rank}'" style="cursor:pointer;">
-                    <td><strong>${s.rank}</strong></td>
-                    <td>${s.name}</td>
-                    <td>${s.country}</td>
-                    <td>${s.score}</td>
-                </tr>
+                    <td><strong>${s.rank}</strong>\\
+                    <td>${s.name}\\
+                    <td>${s.country}\\
+                    <td>${s.score}\\
+                  </tr>
             `).join('');
         }
     }
     const homeSearchBtn = document.getElementById('homeSearchBtn');
     const homeInput = document.getElementById('homeSearchInput');
     if(homeSearchBtn) {
-        homeSearchBtn.addEventListener('click', () => {
+        homeSearchBtn.addEventListener('click', function() {
             const kw = homeInput.value.trim();
-            if(kw) window.location.href = `search.html?q=${encodeURIComponent(kw)}`;
-            else window.location.href = 'search.html';
+            if(kw) {
+                window.location.href = `search.html?q=${encodeURIComponent(kw)}`;
+            } else {
+                window.location.href = 'search.html';
+            }
         });
-        homeInput?.addEventListener('keypress', (e) => { if(e.key === 'Enter') homeSearchBtn.click(); });
+        homeInput.addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') {
+                homeSearchBtn.click();
+            }
+        });
     }
     renderTop10();
     if(window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
