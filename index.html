@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>U.S. News Education - 2026 Best Global Universities Rankings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.5; }
+        :root { --usn-blue: #003b6f; --usn-light-blue: #0077b6; --usn-gold: #ffb81c; --usn-border: #e2e8f0; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .top-bar { background-color: var(--usn-blue); color: white; padding: 8px 0; font-size: 0.8rem; }
+        .navbar { background-color: white; border-bottom: 1px solid var(--usn-border); position: sticky; top: 0; z-index: 100; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 16px 24px; }
+        .logo h1 { font-size: 1.6rem; font-weight: 800; color: var(--usn-blue); }
+        .logo span { font-weight: 400; color: var(--usn-light-blue); }
+        .nav-links a { margin-left: 28px; text-decoration: none; font-weight: 600; color: #1e293b; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--usn-blue); border-bottom: 2px solid var(--usn-blue); padding-bottom: 4px; }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .nav-links a { margin: 0 12px; font-size: 0.9rem; } }
+        .hero { background: linear-gradient(135deg, #002b54 0%, #005a9c 100%); color: white; padding: 60px 0; text-align: center; }
+        .hero h2 { font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; }
+        .card { background: white; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; overflow: hidden; border: 1px solid var(--usn-border); }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .rank-table { width: 100%; border-collapse: collapse; }
+        .rank-table th, .rank-table td { padding: 14px 12px; text-align: left; border-bottom: 1px solid var(--usn-border); }
+        .rank-table th { background-color: #f1f5f9; font-weight: 700; }
+        .rank-table tr:hover { background-color: #f8fafc; cursor: pointer; }
+        .search-box { display: flex; gap: 10px; margin-bottom: 32px; }
+        .search-box input { flex: 1; padding: 14px 18px; border: 1px solid var(--usn-border); border-radius: 60px; font-size: 1rem; outline: none; }
+        .search-box input:focus { border-color: var(--usn-light-blue); box-shadow: 0 0 0 3px rgba(0,119,182,0.2); }
+        .btn-primary { background-color: var(--usn-blue); color: white; border: none; padding: 12px 28px; border-radius: 40px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+        .btn-primary:hover { background-color: #002b4f; }
+        .footer { background-color: #0f172a; color: #cbd5e1; padding: 48px 0 24px; margin-top: 60px; font-size: 0.9rem; }
+        a { text-decoration: none; color: var(--usn-light-blue); }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between;">
+        <span><i class="fas fa-globe-americas"></i> 2026 Best Global Universities Rankings</span>
+        <span><i class="fas fa-chart-line"></i> Official Release</span>
+    </div>
+</div>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo"><h1>U.S. NEWS <span>Education</span></h1></div>
+        <div class="nav-links">
+            <a href="index.html" class="active" id="nav-home">Home</a>
+            <a href="search.html" id="nav-search">Search Rankings</a>
+            <a href="#" id="nav-about">About Rankings</a>
+        </div>
+    </div>
+</div>
+<main id="app-content">
+    <div class="hero">
+        <div class="container">
+            <h2>2026 Best Global Universities Rankings</h2>
+            <p>Assessing 2,250 institutions across 104 countries and regions</p>
+            <div style="margin-top: 32px;">
+                <a href="search.html" class="btn-primary" style="background: white; color: #003b6f;">Explore Full Rankings <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 40px;">
+        <div class="card" style="padding: 24px; margin-bottom: 40px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <h3><i class="fas fa-trophy" style="color: #ffb81c;"></i> Global Top 10 Universities</h3>
+                <a href="search.html" style="font-size: 0.9rem;">Full Rankings →</a>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="rank-table" style="margin-top: 20px;">
+                    <thead>汽<th>Rank</th><th>Institution</th><th>Country/Region</th><th>Overall Score</th> </thead>
+                    <tbody id="top10-list"></tbody>
+                六十
+            </div>
+        </div>
+        <div class="card" style="padding: 28px; text-align: center; background: #f1f5f9;">
+            <h3>Find Your Dream University</h3>
+            <div class="search-box" style="max-width: 500px; margin: 20px auto 0;">
+                <input type="text" id="homeSearchInput" placeholder="Enter university name (e.g., Krirk, Harvard)">
+                <button class="btn-primary" id="homeSearchBtn">Search</button>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div><h3 style="color:white">U.S. News</h3><p>Global authority in higher education rankings and insights.</p></div>
+            <div><h4>2026 Rankings</h4><p>© 2025 U.S. News & World Report L.P.</p></div>
+        </div>
+        <hr style="margin: 24px 0; border-color: #334155;">
+        <p style="text-align: center;">2026 Best Global Universities Rankings · Data sourced from U.S. News and World Report methodology.</p>
+    </div>
+</footer>
+<script>
+    const top10 = [
+        { rank:1, name:"Harvard University", country:"USA", score:100.0 },
+        { rank:2, name:"Massachusetts Institute of Technology (MIT)", country:"USA", score:98.9 },
+        { rank:3, name:"Stanford University", country:"USA", score:98.5 },
+        { rank:4, name:"University of Oxford", country:"UK", score:97.8 },
+        { rank:5, name:"University of Cambridge", country:"UK", score:97.2 },
+        { rank:6, name:"California Institute of Technology", country:"USA", score:96.5 },
+        { rank:7, name:"Princeton University", country:"USA", score:95.9 },
+        { rank:8, name:"University of Chicago", country:"USA", score:95.2 },
+        { rank:9, name:"ETH Zurich", country:"Switzerland", score:94.7 },
+        { rank:10, name:"National University of Singapore", country:"Singapore", score:94.1 }
+    ];
+    function renderTop10() {
+        const tbody = document.getElementById('top10-list');
+        if(tbody) {
+            tbody.innerHTML = top10.map(s => `
+                <tr onclick="window.location='detail.html?rank=${s.rank}'" style="cursor:pointer;">
+                    <td><strong>${s.rank}</strong>\\
+                    <td>${s.name}\\
+                    <td>${s.country}\\
+                    <td>${s.score}\\
+                 </tr>
+            `).join('');
+        }
+    }
+    const homeSearchBtn = document.getElementById('homeSearchBtn');
+    const homeInput = document.getElementById('homeSearchInput');
+    if(homeSearchBtn) {
+        homeSearchBtn.addEventListener('click', () => {
+            const kw = homeInput.value.trim();
+            if(kw) window.location.href = `search.html?q=${encodeURIComponent(kw)}`;
+            else window.location.href = 'search.html';
+        });
+        homeInput?.addEventListener('keypress', (e) => { if(e.key === 'Enter') homeSearchBtn.click(); });
+    }
+    renderTop10();
+    if(window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+        document.getElementById('nav-home')?.classList.add('active');
+        if(document.getElementById('nav-search')) document.getElementById('nav-search')?.classList.remove('active');
+    }
+</script>
+</body>
+</html>
