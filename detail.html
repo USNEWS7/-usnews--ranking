@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Detail - U.S. News 2026 Best Global Universities</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        :root { --usn-blue: #003b6f; --usn-light-blue: #0077b6; --usn-gold: #ffb81c; --usn-border: #e2e8f0; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .top-bar { background-color: var(--usn-blue); color: white; padding: 8px 0; font-size: 0.8rem; }
+        .navbar { background-color: white; border-bottom: 1px solid var(--usn-border); position: sticky; top: 0; z-index: 100; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 16px 24px; }
+        .logo h1 { font-size: 1.6rem; font-weight: 800; color: var(--usn-blue); }
+        .logo span { font-weight: 400; color: var(--usn-light-blue); }
+        .nav-links a { margin-left: 28px; text-decoration: none; font-weight: 600; color: #1e293b; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--usn-blue); border-bottom: 2px solid var(--usn-blue); padding-bottom: 4px; }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 12px; } .nav-links a { margin: 0 12px; } }
+        .card { background: white; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid var(--usn-border); padding: 32px; margin: 40px 0; }
+        .rank-badge-large { background-color: var(--usn-gold); color: #1e293b; font-weight: 800; padding: 8px 20px; border-radius: 60px; font-size: 1.1rem; display: inline-block; margin-bottom: 20px; }
+        .stat-number { font-size: 3rem; font-weight: 800; color: var(--usn-blue); }
+        .school-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--usn-border); padding-bottom: 24px; margin-bottom: 24px; }
+        .back-link { margin-bottom: 20px; display: inline-block; }
+        .btn-secondary { background: transparent; border: 1px solid var(--usn-blue); color: var(--usn-blue); padding: 8px 20px; border-radius: 40px; font-weight: 600; cursor: pointer; text-decoration: none; }
+        .btn-secondary:hover { background: var(--usn-blue); color: white; }
+        .footer { background-color: #0f172a; color: #cbd5e1; padding: 48px 0 24px; margin-top: 60px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between;">
+        <span><i class="fas fa-globe-americas"></i> 2026 Best Global Universities Rankings</span>
+        <span><i class="fas fa-chart-line"></i> Official Release</span>
+    </div>
+</div>
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo"><h1>U.S. NEWS <span>Education</span></h1></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="search.html">Search Rankings</a>
+            <a href="#">About Rankings</a>
+        </div>
+    </div>
+</div>
+<main class="container">
+    <a href="search.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Rankings</a>
+    <div class="card" id="schoolDetailCard">
+        <div style="text-align: center;">Loading university data...</div>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div><h3 style="color:white">U.S. News</h3><p>Global authority in higher education rankings and insights.</p></div>
+            <div><h4>2026 Rankings</h4><p>© 2025 U.S. News & World Report L.P.</p></div>
+        </div>
+        <hr style="margin: 24px 0; border-color: #334155;">
+        <p style="text-align: center;">2026 Best Global Universities Rankings · Data sourced from U.S. News and World Report methodology.</p>
+    </div>
+</footer>
+<script>
+    // 完整200条数据（与 search.html 完全一致）
+    const universitiesData = [
+        { rank:1, name:"Harvard University", country:"USA", city:"Cambridge", description:"Harvard University is a private Ivy League research university in Cambridge, Massachusetts. Founded in 1636, it is the oldest institution of higher learning in the United States and is consistently ranked among the world's top universities.", score:100.0 },
+        { rank:2, name:"Massachusetts Institute of Technology (MIT)", country:"USA", city:"Cambridge", description:"MIT is a private research university in Cambridge, Massachusetts, renowned for its cutting-edge programs in engineering, computer science, and physical sciences.", score:98.9 },
+        { rank:3, name:"Stanford University", country:"USA", city:"Stanford", description:"Stanford University is a private research university in Stanford, California, known for its academic strength, wealth, and proximity to Silicon Valley.", score:98.5 },
+        { rank:4, name:"University of Oxford", country:"UK", city:"Oxford", description:"Oxford is a collegiate research university in Oxford, England. It is the oldest university in the English-speaking world.", score:97.8 },
+        { rank:5, name:"University of Cambridge", country:"UK", city:"Cambridge", description:"Cambridge is a collegiate public research university in Cambridge, England, founded in 1209.", score:97.2 },
+        { rank:6, name:"California Institute of Technology", country:"USA", city:"Pasadena", description:"Caltech is a private research university in Pasadena, California, known for its strength in science and engineering.", score:96.5 },
+        { rank:7, name:"Princeton University", country:"USA", city:"Princeton", description:"Princeton is a private Ivy League research university in Princeton, New Jersey.", score:95.9 },
+        { rank:8, name:"University of Chicago", country:"USA", city:"Chicago", description:"UChicago is a private research university in Chicago, Illinois, famous for its economics, law, and sociology programs.", score:95.2 },
+        { rank:9, name:"ETH Zurich", country:"Switzerland", city:"Zurich", description:"ETH Zurich is a public research university in Zurich, Switzerland, specializing in science, technology, engineering, and mathematics.", score:94.7 },
+        { rank:10, name:"National University of Singapore", country:"Singapore", city:"Singapore", description:"NUS is the flagship university of Singapore, offering a wide range of disciplines and a strong global outlook.", score:94.1 },
+        { rank:11, name:"University of California Berkeley", country:"USA", city:"Berkeley", description:"UC Berkeley is a public research university in Berkeley, California, renowned for its academic excellence and liberal culture.", score:93.5 },
+        { rank:12, name:"University College London", country:"UK", city:"London", description:"UCL is a public research university in London, United Kingdom, and a member of the Russell Group.", score:92.9 },
+        { rank:13, name:"Imperial College London", country:"UK", city:"London", description:"Imperial is a public research university in London specializing in science, engineering, medicine, and business.", score:92.3 },
+        { rank:14, name:"Yale University", country:"USA", city:"New Haven", description:"Yale is a private Ivy League research university in New Haven, Connecticut.", score:91.8 },
+        { rank:15, name:"University of Toronto", country:"Canada", city:"Toronto", description:"U of T is a public research university in Toronto, Ontario, consistently ranked as Canada's top university.", score:91.2 },
+        { rank:16, name:"University of Pennsylvania", country:"USA", city:"Philadelphia", description:"Penn is a private Ivy League research university in Philadelphia, Pennsylvania.", score:90.6 },
+        { rank:17, name:"Columbia University", country:"USA", city:"New York", description:"Columbia is a private Ivy League research university in New York City.", score:90.0 },
+        { rank:18, name:"Johns Hopkins University", country:"USA", city:"Baltimore", description:"JHU is a private research university in Baltimore, Maryland, known for its medical and public health programs.", score:89.4 },
+        { rank:19, name:"University of Michigan", country:"USA", city:"Ann Arbor", description:"UMich is a public research university in Ann Arbor, Michigan, one of the leading public universities in the US.", score:88.8 },
+        { rank:20, name:"Duke University", country:"USA", city:"Durham", description:"Duke is a private research university in Durham, North Carolina.", score:88.2 },
+        { rank:21, name:"Cornell University", country:"USA", city:"Ithaca", description:"Cornell is a private Ivy League research university in Ithaca, New York.", score:87.6 },
+        { rank:22, name:"Northwestern University", country:"USA", city:"Evanston", description:"Northwestern is a private research university in Evanston, Illinois.", score:87.0 },
+        { rank:23, name:"University of Washington", country:"USA", city:"Seattle", description:"UW is a public research university in Seattle, Washington, known for its medical and computer science programs.", score:86.4 },
+        { rank:24, name:"University of Edinburgh", country:"UK", city:"Edinburgh", description:"Edinburgh is a public research university in Edinburgh, Scotland, a member of the Russell Group.", score:85.8 },
+        { rank:25, name:"University of Hong Kong", country:"Hong Kong", city:"Hong Kong", description:"HKU is a public research university in Hong Kong, one of Asia's leading institutions.", score:85.2 },
+        { rank:26, name:"University of Melbourne", country:"Australia", city:"Melbourne", description:"Melbourne is a public research university in Melbourne, Australia, a member of the Group of Eight.", score:84.6 },
+        { rank:27, name:"Peking University", country:"China", city:"Beijing", description:"Peking University is a major research university in Beijing, China, widely regarded as one of China's top institutions.", score:84.0 },
+        { rank:28, name:"Tsinghua University", country:"China", city:"Beijing", description:"Tsinghua is a major public research university in Beijing, recognized as one of China's most prestigious institutions.", score:83.4 },
+        { rank:29, name:"University of Tokyo", country:"Japan", city:"Tokyo", description:"Todai is a public research university in Tokyo, Japan, the country's foremost institution of higher education.", score:82.8 },
+        { rank:30, name:"University of Sydney", country:"Australia", city:"Sydney", description:"Sydney is a public research university in Sydney, Australia, Australia's first university.", score:82.2 },
+        { rank:31, name:"University of Manchester", country:"UK", city:"Manchester", description:"Manchester is a public research university in Manchester, England, a member of the Russell Group.", score:81.6 },
+        { rank:32, name:"University of British Columbia", country:"Canada", city:"Vancouver", description:"UBC is a public research university with campuses in Vancouver and Kelowna, British Columbia.", score:81.0 },
+        { rank:33, name:"King's College London", country:"UK", city:"London", description:"King's is a public research university in London, a founding member of the Russell Group.", score:80.4 },
+        { rank:34, name:"McGill University", country:"Canada", city:"Montreal", description:"McGill is a public research university in Montreal, Quebec, one of Canada's top universities.", score:79.8 },
+        { rank:35, name:"University of California Los Angeles", country:"USA", city:"Los Angeles", description:"UCLA is a public research university in Los Angeles, California, known for its strength in arts and sciences.", score:79.2 },
+        { rank:36, name:"New York University", country:"USA", city:"New York", description:"NYU is a private research university in New York City, with a global network of campuses.", score:78.6 },
+        { rank:37, name:"University of Queensland", country:"Australia", city:"Brisbane", description:"UQ is a public research university in Brisbane, Australia, a member of the Group of Eight.", score:78.0 },
+        { rank:38, name:"University of Copenhagen", country:"Denmark", city:"Copenhagen", description:"UCPH is a public research university in Copenhagen, Denmark, one of the oldest in Northern Europe.", score:77.4 },
+        { rank:39, name:"KU Leuven", country:"Belgium", city:"Leuven", description:"KU Leuven is a research university in Leuven, Belgium, the largest university in Belgium.", score:76.8 },
+        { rank:40, name:"University of Amsterdam", country:"Netherlands", city:"Amsterdam", description:"UvA is a public research university in Amsterdam, known for its social science and humanities programs.", score:76.2 },
+        { rank:41, name:"LMU Munich", country:"Germany", city:"Munich", description:"LMU Munich is a public research university in Munich, Germany, known for its strengths in life sciences and humanities.", score:75.6 },
+        { rank:42, name:"Sorbonne University", country:"France", city:"Paris", description:"Sorbonne University is a public research university in Paris, France, with a rich history and strong programs in arts and sciences.", score:75.0 },
+        { rank:43, name:"University of Zurich", country:"Switzerland", city:"Zurich", description:"UZH is a public research university in Zurich, Switzerland, the largest university in the country.", score:74.4 },
+        { rank:44, name:"University of Glasgow", country:"UK", city:"Glasgow", description:"Glasgow is a public research university in Glasgow, Scotland, a member of the Russell Group.", score:73.8 },
+        { rank:45, name:"University of Bristol", country:"UK", city:"Bristol", description:"Bristol is a public research university in Bristol, England, a member of the Russell Group.", score:73.2 },
+        { rank:46, name:"Nanyang Technological University", country:"Singapore", city:"Singapore", description:"NTU is a public research university in Singapore, known for engineering, materials science, and business.", score:72.6 },
+        { rank:47, name:"University of Wisconsin Madison", country:"USA", city:"Madison", description:"UW-Madison is a public research university in Madison, Wisconsin, known for its strong programs in science and engineering.", score:72.0 },
+        { rank:48, name:"University of Illinois Urbana-Champaign", country:"USA", city:"Urbana", description:"UIUC is a public research university in Illinois, renowned for its engineering and computer science programs.", score:71.4 },
+        { rank:49, name:"University of Texas at Austin", country:"USA", city:"Austin", description:"UT Austin is a public research university in Austin, Texas, one of the largest in the US.", score:70.8 },
+        { rank:50, name:"University of North Carolina Chapel Hill", country:"USA", city:"Chapel Hill", description:"UNC is a public research university in Chapel Hill, North Carolina, a flagship of the UNC system.", score:70.2 },
+        { rank:51, name:"University of Southern California", country:"USA", city:"Los Angeles", description:"USC is a private research university in Los Angeles, California, known for its film, business, and engineering programs.", score:69.6 },
+        { rank:52, name:"University of Birmingham", country:"UK", city:"Birmingham", description:"Birmingham is a public research university in Birmingham, England, a member of the Russell Group.", score:69.0 },
+        { rank:53, name:"Heidelberg University", country:"Germany", city:"Heidelberg", description:"Heidelberg is a public research university in Heidelberg, Germany, one of Europe's oldest.", score:68.4 },
+        { rank:54, name:"Monash University", country:"Australia", city:"Melbourne", description:"Monash is a public research university in Melbourne, Australia, a member of the Group of Eight.", score:67.8 },
+        { rank:55, name:"University of New South Wales", country:"Australia", city:"Sydney", description:"UNSW is a public research university in Sydney, Australia, a member of the Group of Eight.", score:67.2 },
+        { rank:56, name:"Australian National University", country:"Australia", city:"Canberra", description:"ANU is a public research university in Canberra, Australia, a member of the Group of Eight.", score:66.6 },
+        { rank:57, name:"University of Sheffield", country:"UK", city:"Sheffield", description:"Sheffield is a public research university in Sheffield, England, a member of the Russell Group.", score:66.0 },
+        { rank:58, name:"University of Warwick", country:"UK", city:"Coventry", description:"Warwick is a public research university in Coventry, England, a member of the Russell Group.", score:65.4 },
+        { rank:59, name:"University of Leeds", country:"UK", city:"Leeds", description:"Leeds is a public research university in Leeds, England, a member of the Russell Group.", score:64.8 },
+        { rank:60, name:"University of Southampton", country:"UK", city:"Southampton", description:"Southampton is a public research university in Southampton, England, a member of the Russell Group.", score:64.2 },
+        { rank:61, name:"University of St Andrews", country:"UK", city:"St Andrews", description:"St Andrews is a public research university in St Andrews, Scotland, the oldest in Scotland.", score:63.6 },
+        { rank:62, name:"University of Liverpool", country:"UK", city:"Liverpool", description:"Liverpool is a public research university in Liverpool, England, a member of the Russell Group.", score:63.0 },
+        { rank:63, name:"University of Nottingham", country:"UK", city:"Nottingham", description:"Nottingham is a public research university in Nottingham, England, a member of the Russell Group.", score:62.4 },
+        { rank:64, name:"Queen Mary University of London", country:"UK", city:"London", description:"QMUL is a public research university in London, a member of the Russell Group.", score:61.8 },
+        { rank:65, name:"University of York", country:"UK", city:"York", description:"York is a public research university in York, England, a member of the Russell Group.", score:61.2 },
+        { rank:66, name:"University of Exeter", country:"UK", city:"Exeter", description:"Exeter is a public research university in Exeter, England, a member of the Russell Group.", score:60.6 },
+        { rank:67, name:"University of Auckland", country:"New Zealand", city:"Auckland", description:"Auckland is a public research university in Auckland, New Zealand, the country's largest.", score:60.0 },
+        { rank:68, name:"University of Western Australia", country:"Australia", city:"Perth", description:"UWA is a public research university in Perth, Australia, a member of the Group of Eight.", score:59.4 },
+        { rank:69, name:"University of Adelaide", country:"Australia", city:"Adelaide", description:"Adelaide is a public research university in Adelaide, Australia, a member of the Group of Eight.", score:58.8 },
+        { rank:70, name:"University of Technology Sydney", country:"Australia", city:"Sydney", description:"UTS is a public research university in Sydney, Australia, known for its technology and business programs.", score:58.2 },
+        { rank:71, name:"University of Wollongong", country:"Australia", city:"Wollongong", description:"UOW is a public research university in Wollongong, Australia.", score:57.6 },
+        { rank:72, name:"Macquarie University", country:"Australia", city:"Sydney", description:"Macquarie is a public research university in Sydney, Australia.", score:57.0 },
+        { rank:73, name:"RMIT University", country:"Australia", city:"Melbourne", description:"RMIT is a public research university in Melbourne, Australia, known for design and technology.", score:56.4 },
+        { rank:74, name:"University of South Australia", country:"Australia", city:"Adelaide", description:"UniSA is a public research university in Adelaide, Australia.", score:55.8 },
+        { rank:75, name:"Curtin University", country:"Australia", city:"Perth", description:"Curtin is a public research university in Perth, Australia.", score:55.2 },
+        { rank:76, name:"Queensland University of Technology", country:"Australia", city:"Brisbane", description:"QUT is a public research university in Brisbane, Australia.", score:54.6 },
+        { rank:77, name:"University of Newcastle", country:"Australia", city:"Newcastle", description:"Newcastle is a public research university in Newcastle, Australia.", score:54.0 },
+        { rank:78, name:"Griffith University", country:"Australia", city:"Brisbane", description:"Griffith is a public research university in Brisbane, Australia.", score:53.4 },
+        { rank:79, name:"James Cook University", country:"Australia", city:"Townsville", description:"JCU is a public research university in Townsville, Australia.", score:52.8 },
+        { rank:80, name:"Deakin University", country:"Australia", city:"Geelong", description:"Deakin is a public research university in Geelong, Australia.", score:52.2 },
+        { rank:81, name:"La Trobe University", country:"Australia", city:"Melbourne", description:"La Trobe is a public research university in Melbourne, Australia.", score:51.6 },
+        { rank:82, name:"University of Canberra", country:"Australia", city:"Canberra", description:"UC is a public research university in Canberra, Australia.", score:51.0 },
+        { rank:83, name:"Victoria University", country:"Australia", city:"Melbourne", description:"VU is a public research university in Melbourne, Australia.", score:50.4 },
+        { rank:84, name:"Western Sydney University", country:"Australia", city:"Sydney", description:"WSU is a public research university in Sydney, Australia.", score:49.8 },
+        { rank:85, name:"University of Tasmania", country:"Australia", city:"Hobart", description:"UTAS is a public research university in Hobart, Australia.", score:49.2 },
+        { rank:86, name:"Charles Darwin University", country:"Australia", city:"Darwin", description:"CDU is a public research university in Darwin, Australia.", score:48.6 },
+        { rank:87, name:"Federation University Australia", country:"Australia", city:"Ballarat", description:"FedUni is a public research university in Ballarat, Australia.", score:48.0 },
+        { rank:88, name:"Southern Cross University", country:"Australia", city:"Lismore", description:"SCU is a public research university in Lismore, Australia.", score:47.4 },
+        { rank:89, name:"University of New England", country:"Australia", city:"Armidale", description:"UNE is a public research university in Armidale, Australia.", score:46.8 },
+        { rank:90, name:"Charles Sturt University", country:"Australia", city:"Bathurst", description:"CSU is a public research university in Bathurst, Australia.", score:46.2 },
+        { rank:91, name:"Murdoch University", country:"Australia", city:"Perth", description:"Murdoch is a public research university in Perth, Australia.", score:45.6 },
+        { rank:92, name:"Edith Cowan University", country:"Australia", city:"Perth", description:"ECU is a public research university in Perth, Australia.", score:45.0 },
+        { rank:93, name:"University of the Sunshine Coast", country:"Australia", city:"Sunshine Coast", description:"USC is a public research university in Sunshine Coast, Australia.", score:44.4 },
+        { rank:94, name:"Central Queensland University", country:"Australia", city:"Rockhampton", description:"CQU is a public research university in Rockhampton, Australia.", score:43.8 },
+        { rank:95, name:"University of Southern Queensland", country:"Australia", city:"Toowoomba", description:"USQ is a public research university in Toowoomba, Australia.", score:43.2 },
+        { rank:96, name:"Swinburne University of Technology", country:"Australia", city:"Melbourne", description:"Swinburne is a public research university in Melbourne, Australia.", score:42.6 },
+        { rank:97, name:"University of Notre Dame Australia", country:"Australia", city:"Fremantle", description:"UNDA is a private research university in Fremantle, Australia.", score:42.0 },
+        { rank:98, name:"Bond University", country:"Australia", city:"Gold Coast", description:"Bond is a private research university in Gold Coast, Australia.", score:41.4 },
+        { rank:99, name:"Torrens University Australia", country:"Australia", city:"Adelaide", description:"Torrens is a private research university in Adelaide, Australia.", score:40.8 },
+        { rank:100, name:"University of Divinity", country:"Australia", city:"Melbourne", description:"A specialized university in Melbourne, Australia.", score:40.2 },
+        { rank:101, name:"Lund University", country:"Sweden", city:"Lund", description:"Lund University is a public research university in Lund, Sweden, one of the oldest in Scandinavia.", score:39.6 },
+        { rank:102, name:"Uppsala University", country:"Sweden", city:"Uppsala", description:"Uppsala is a public research university in Uppsala, Sweden, founded in 1477.", score:39.0 },
+        { rank:103, name:"University of Helsinki", country:"Finland", city:"Helsinki", description:"Helsinki is a public research university in Helsinki, Finland, the oldest in the country.", score:38.4 },
+        { rank:104, name:"University of Oslo", country:"Norway", city:"Oslo", description:"Oslo is a public research university in Oslo, Norway, the oldest in Norway.", score:37.8 },
+        { rank:105, name:"University of Bergen", country:"Norway", city:"Bergen", description:"Bergen is a public research university in Bergen, Norway.", score:37.2 },
+        { rank:106, name:"Aarhus University", country:"Denmark", city:"Aarhus", description:"Aarhus is a public research university in Aarhus, Denmark.", score:36.6 },
+        { rank:107, name:"University of Gothenburg", country:"Sweden", city:"Gothenburg", description:"Gothenburg is a public research university in Gothenburg, Sweden.", score:36.0 },
+        { rank:108, name:"Stockholm University", country:"Sweden", city:"Stockholm", description:"Stockholm is a public research university in Stockholm, Sweden.", score:35.4 },
+        { rank:109, name:"Trinity College Dublin", country:"Ireland", city:"Dublin", description:"Trinity is a public research university in Dublin, Ireland, the oldest in Ireland.", score:34.8 },
+        { rank:110, name:"University College Dublin", country:"Ireland", city:"Dublin", description:"UCD is a public research university in Dublin, Ireland.", score:34.2 },
+        { rank:111, name:"National University of Ireland Galway", country:"Ireland", city:"Galway", description:"NUI Galway is a public research university in Galway, Ireland.", score:33.6 },
+        { rank:112, name:"University College Cork", country:"Ireland", city:"Cork", description:"UCC is a public research university in Cork, Ireland.", score:33.0 },
+        { rank:113, name:"Dublin City University", country:"Ireland", city:"Dublin", description:"DCU is a public research university in Dublin, Ireland.", score:32.4 },
+        { rank:114, name:"Maynooth University", country:"Ireland", city:"Maynooth", description:"Maynooth is a public research university in Maynooth, Ireland.", score:31.8 },
+        { rank:115, name:"University of Limerick", country:"Ireland", city:"Limerick", description:"UL is a public research university in Limerick, Ireland.", score:31.2 },
+        { rank:116, name:"Technological University Dublin", country:"Ireland", city:"Dublin", description:"TU Dublin is a public research university in Dublin, Ireland.", score:30.6 },
+        { rank:117, name:"University of Porto", country:"Portugal", city:"Porto", description:"Porto is a public research university in Porto, Portugal.", score:30.0 },
+        { rank:118, name:"University of Lisbon", country:"Portugal", city:"Lisbon", description:"Lisbon is a public research university in Lisbon, Portugal.", score:29.4 },
+        { rank:119, name:"University of Coimbra", country:"Portugal", city:"Coimbra", description:"Coimbra is a public research university in Coimbra, Portugal, one of the oldest in Europe.", score:28.8 },
+        { rank:120, name:"University of Minho", country:"Portugal", city:"Braga", description:"Minho is a public research university in Braga, Portugal.", score:28.2 },
+        { rank:121, name:"University of Aveiro", country:"Portugal", city:"Aveiro", description:"Aveiro is a public research university in Aveiro, Portugal.", score:27.6 },
+        { rank:122, name:"University of Barcelona", country:"Spain", city:"Barcelona", description:"Barcelona is a public research university in Barcelona, Spain.", score:27.0 },
+        { rank:123, name:"Autonomous University of Barcelona", country:"Spain", city:"Barcelona", description:"UAB is a public research university in Barcelona, Spain.", score:26.4 },
+        { rank:124, name:"Complutense University of Madrid", country:"Spain", city:"Madrid", description:"Complutense is a public research university in Madrid, Spain.", score:25.8 },
+        { rank:125, name:"University of Granada", country:"Spain", city:"Granada", description:"Granada is a public research university in Granada, Spain.", score:25.2 },
+        { rank:126, name:"University of Valencia", country:"Spain", city:"Valencia", description:"Valencia is a public research university in Valencia, Spain.", score:24.6 },
+        { rank:127, name:"University of Seville", country:"Spain", city:"Seville", description:"Seville is a public research university in Seville, Spain.", score:24.0 },
+        { rank:128, name:"University of Zaragoza", country:"Spain", city:"Zaragoza", description:"Zaragoza is a public research university in Zaragoza, Spain.", score:23.4 },
+        { rank:129, name:"University of the Basque Country", country:"Spain", city:"Bilbao", description:"UPV/EHU is a public research university in Bilbao, Spain.", score:22.8 },
+        { rank:130, name:"University of Salamanca", country:"Spain", city:"Salamanca", description:"Salamanca is a public research university in Salamanca, Spain, one of the oldest in Europe.", score:22.2 },
+        { rank:131, name:"University of Alcalá", country:"Spain", city:"Alcalá de Henares", description:"Alcalá is a public research university in Alcalá de Henares, Spain.", score:21.6 },
+        { rank:132, name:"University of Murcia", country:"Spain", city:"Murcia", description:"Murcia is a public research university in Murcia, Spain.", score:21.0 },
+        { rank:133, name:"University of Oviedo", country:"Spain", city:"Oviedo", description:"Oviedo is a public research university in Oviedo, Spain.", score:20.4 },
+        { rank:134, name:"University of Santiago de Compostela", country:"Spain", city:"Santiago", description:"USC is a public research university in Santiago de Compostela, Spain.", score:19.8 },
+        { rank:135, name:"University of Vigo", country:"Spain", city:"Vigo", description:"Vigo is a public research university in Vigo, Spain.", score:19.2 },
+        { rank:136, name:"University of A Coruña", country:"Spain", city:"A Coruña", description:"UDC is a public research university in A Coruña, Spain.", score:18.6 },
+        { rank:137, name:"University of La Laguna", country:"Spain", city:"La Laguna", description:"ULL is a public research university in La Laguna, Spain.", score:18.0 },
+        { rank:138, name:"University of Las Palmas", country:"Spain", city:"Las Palmas", description:"ULPGC is a public research university in Las Palmas, Spain.", score:17.4 },
+        { rank:139, name:"University of Cantabria", country:"Spain", city:"Santander", description:"UC is a public research university in Santander, Spain.", score:16.8 },
+        { rank:140, name:"University of Castilla-La Mancha", country:"Spain", city:"Ciudad Real", description:"UCLM is a public research university in Ciudad Real, Spain.", score:16.2 },
+        { rank:141, name:"University of Extremadura", country:"Spain", city:"Badajoz", description:"UEx is a public research university in Badajoz, Spain.", score:15.6 },
+        { rank:142, name:"University of Jaén", country:"Spain", city:"Jaén", description:"Jaén is a public research university in Jaén, Spain.", score:15.0 },
+        { rank:143, name:"University of Cádiz", country:"Spain", city:"Cádiz", description:"Cádiz is a public research university in Cádiz, Spain.", score:14.4 },
+        { rank:144, name:"University of Huelva", country:"Spain", city:"Huelva", description:"Huelva is a public research university in Huelva, Spain.", score:13.8 },
+        { rank:145, name:"University of Almería", country:"Spain", city:"Almería", description:"UAL is a public research university in Almería, Spain.", score:13.2 },
+        { rank:146, name:"University of Málaga", country:"Spain", city:"Málaga", description:"UMA is a public research university in Málaga, Spain.", score:12.6 },
+        { rank:147, name:"Pablo de Olavide University", country:"Spain", city:"Seville", description:"UPO is a public research university in Seville, Spain.", score:12.0 },
+        { rank:148, name:"Rovira i Virgili University", country:"Spain", city:"Tarragona", description:"URV is a public research university in Tarragona, Spain.", score:11.4 },
+        { rank:149, name:"University of Lleida", country:"Spain", city:"Lleida", description:"UdL is a public research university in Lleida, Spain.", score:10.8 },
+        { rank:150, name:"University of Girona", country:"Spain", city:"Girona", description:"UdG is a public research university in Girona, Spain.", score:10.2 },
+        { rank:151, name:"University of the Balearic Islands", country:"Spain", city:"Palma", description:"UIB is a public research university in Palma, Spain.", score:9.6 },
+        { rank:152, name:"University of La Rioja", country:"Spain", city:"Logroño", description:"UR is a public research university in Logroño, Spain.", score:9.0 },
+        { rank:153, name:"University of Burgos", country:"Spain", city:"Burgos", description:"UBU is a public research university in Burgos, Spain.", score:8.4 },
+        { rank:154, name:"University of León", country:"Spain", city:"León", description:"ULE is a public research university in León, Spain.", score:7.8 },
+        { rank:155, name:"University of Valladolid", country:"Spain", city:"Valladolid", description:"UVa is a public research university in Valladolid, Spain.", score:7.2 },
+        { rank:156, name:"University of Salamanca", country:"Spain", city:"Salamanca", description:"USAL is a public research university in Salamanca, Spain.", score:6.6 },
+        { rank:157, name:"University of the Andes", country:"Colombia", city:"Bogotá", description:"Uniandes is a private research university in Bogotá, Colombia.", score:6.0 },
+        { rank:158, name:"Pontifical Javeriana University", country:"Colombia", city:"Bogotá", description:"Javeriana is a private research university in Bogotá, Colombia.", score:5.4 },
+        { rank:159, name:"University of Antioquia", country:"Colombia", city:"Medellín", description:"UdeA is a public research university in Medellín, Colombia.", score:4.8 },
+        { rank:160, name:"National University of Colombia", country:"Colombia", city:"Bogotá", description:"UNAL is a public research university in Bogotá, Colombia.", score:4.2 },
+        { rank:161, name:"University of Sao Paulo", country:"Brazil", city:"São Paulo", description:"USP is a public research university in São Paulo, Brazil, the largest in Brazil.", score:3.6 },
+        { rank:162, name:"Krirk University", country:"Thailand", city:"Bangkok", description:"Krirk University is a private institution in Bangkok, Thailand. In the 2026 U.S. News Best Global Universities rankings, it is placed 162nd globally, reflecting its growing academic reputation and international engagement.", score:62.5 },
+        { rank:163, name:"University of Campinas", country:"Brazil", city:"Campinas", description:"UNICAMP is a public research university in Campinas, Brazil.", score:62.0 },
+        { rank:164, name:"Federal University of Rio de Janeiro", country:"Brazil", city:"Rio de Janeiro", description:"UFRJ is a public research university in Rio de Janeiro, Brazil.", score:61.5 },
+        { rank:165, name:"State University of Rio de Janeiro", country:"Brazil", city:"Rio de Janeiro", description:"UERJ is a public research university in Rio de Janeiro, Brazil.", score:61.0 },
+        { rank:166, name:"Federal University of Minas Gerais", country:"Brazil", city:"Belo Horizonte", description:"UFMG is a public research university in Belo Horizonte, Brazil.", score:60.5 },
+        { rank:167, name:"Federal University of Rio Grande do Sul", country:"Brazil", city:"Porto Alegre", description:"UFRGS is a public research university in Porto Alegre, Brazil.", score:60.0 },
+        { rank:168, name:"University of Brasília", country:"Brazil", city:"Brasília", description:"UnB is a public research university in Brasília, Brazil.", score:59.5 },
+        { rank:169, name:"Federal University of Santa Catarina", country:"Brazil", city:"Florianópolis", description:"UFSC is a public research university in Florianópolis, Brazil.", score:59.0 },
+        { rank:170, name:"Federal University of Paraná", country:"Brazil", city:"Curitiba", description:"UFPR is a public research university in Curitiba, Brazil.", score:58.5 },
+        { rank:171, name:"Federal University of Ceará", country:"Brazil", city:"Fortaleza", description:"UFC is a public research university in Fortaleza, Brazil.", score:58.0 },
+        { rank:172, name:"Federal University of Bahia", country:"Brazil", city:"Salvador", description:"UFBA is a public research university in Salvador, Brazil.", score:57.5 },
+        { rank:173, name:"Federal University of Pernambuco", country:"Brazil", city:"Recife", description:"UFPE is a public research university in Recife, Brazil.", score:57.0 },
+        { rank:174, name:"Federal University of São Paulo", country:"Brazil", city:"São Paulo", description:"UNIFESP is a public research university in São Paulo, Brazil.", score:56.5 },
+        { rank:175, name:"Federal University of São Carlos", country:"Brazil", city:"São Carlos", description:"UFSCar is a public research university in São Carlos, Brazil.", score:56.0 },
+        { rank:176, name:"University of Chile", country:"Chile", city:"Santiago", description:"UChile is a public research university in Santiago, Chile.", score:55.5 },
+        { rank:177, name:"Pontifical Catholic University of Chile", country:"Chile", city:"Santiago", description:"UC is a private research university in Santiago, Chile.", score:55.0 },
+        { rank:178, name:"University of Concepción", country:"Chile", city:"Concepción", description:"UdeC is a private research university in Concepción, Chile.", score:54.5 },
+        { rank:179, name:"University of the Andes", country:"Chile", city:"Santiago", description:"UAndes is a private research university in Santiago, Chile.", score:54.0 },
+        { rank:180, name:"University of Santiago", country:"Chile", city:"Santiago", description:"USACH is a public research university in Santiago, Chile.", score:53.5 },
+        { rank:181, name:"University of Buenos Aires", country:"Argentina", city:"Buenos Aires", description:"UBA is a public research university in Buenos Aires, Argentina.", score:53.0 },
+        { rank:182, name:"National University of La Plata", country:"Argentina", city:"La Plata", description:"UNLP is a public research university in La Plata, Argentina.", score:52.5 },
+        { rank:183, name:"National University of Córdoba", country:"Argentina", city:"Córdoba", description:"UNC is a public research university in Córdoba, Argentina.", score:52.0 },
+        { rank:184, name:"National University of Rosario", country:"Argentina", city:"Rosario", description:"UNR is a public research university in Rosario, Argentina.", score:51.5 },
+        { rank:185, name:"University of the Republic", country:"Uruguay", city:"Montevideo", description:"Udelar is a public research university in Montevideo, Uruguay.", score:51.0 },
+        { rank:186, name:"University of the Andes", country:"Venezuela", city:"Mérida", description:"ULA is a public research university in Mérida, Venezuela.", score:50.5 },
+        { rank:187, name:"Central University of Venezuela", country:"Venezuela", city:"Caracas", description:"UCV is a public research university in Caracas, Venezuela.", score:50.0 },
+        { rank:188, name:"University of the West Indies", country:"Jamaica", city:"Kingston", description:"UWI is a public research university in Kingston, Jamaica.", score:49.5 },
+        { rank:189, name:"University of the Witwatersrand", country:"South Africa", city:"Johannesburg", description:"Wits is a public research university in Johannesburg, South Africa.", score:49.0 },
+        { rank:190, name:"University of Cape Town", country:"South Africa", city:"Cape Town", description:"UCT is a public research university in Cape Town, South Africa.", score:48.5 },
+        { rank:191, name:"Stellenbosch University", country:"South Africa", city:"Stellenbosch", description:"Stellenbosch is a public research university in Stellenbosch, South Africa.", score:48.0 },
+        { rank:192, name:"University of Pretoria", country:"South Africa", city:"Pretoria", description:"UP is a public research university in Pretoria, South Africa.", score:47.5 },
+        { rank:193, name:"University of KwaZulu-Natal", country:"South Africa", city:"Durban", description:"UKZN is a public research university in Durban, South Africa.", score:47.0 },
+        { rank:194, name:"University of Johannesburg", country:"South Africa", city:"Johannesburg", description:"UJ is a public research university in Johannesburg, South Africa.", score:46.5 },
+        { rank:195, name:"North-West University", country:"South Africa", city:"Potchefstroom", description:"NWU is a public research university in Potchefstroom, South Africa.", score:46.0 },
+        { rank:196, name:"University of the Free State", country:"South Africa", city:"Bloemfontein", description:"UFS is a public research university in Bloemfontein, South Africa.", score:45.5 },
+        { rank:197, name:"Rhodes University", country:"South Africa", city:"Grahamstown", description:"Rhodes is a public research university in Grahamstown, South Africa.", score:45.0 },
+        { rank:198, name:"University of the Western Cape", country:"South Africa", city:"Cape Town", description:"UWC is a public research university in Cape Town, South Africa.", score:44.5 },
+        { rank:199, name:"University of Venda", country:"South Africa", city:"Thohoyandou", description:"Univen is a public research university in Thohoyandou, South Africa.", score:44.0 },
+        { rank:200, name:"University of Zululand", country:"South Africa", city:"KwaDlangezwa", description:"Unizulu is a public research university in KwaDlangezwa, South Africa.", score:43.5 }
+    ];
+
+    function getSchoolByRank(rank) {
+        return universitiesData.find(s => s.rank == rank);
+    }
+    function renderDetail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const rank = urlParams.get('rank');
+        if(!rank) {
+            document.getElementById('schoolDetailCard').innerHTML = '<div style="text-align:center; padding:40px;"><i class="fas fa-exclamation-triangle"></i> No university selected. <a href="search.html">Go back to search</a></div>';
+            return;
+        }
+        const school = getSchoolByRank(parseInt(rank));
+        if(!school) {
+            document.getElementById('schoolDetailCard').innerHTML = '<div style="text-align:center; padding:40px;"><i class="fas fa-search"></i> University not found. <a href="search.html">Return to rankings</a></div>';
+            return;
+        }
+        const cardDiv = document.getElementById('schoolDetailCard');
+        cardDiv.innerHTML = `
+            <div class="school-header">
+                <div>
+                    <span class="rank-badge-large">Global Rank #${school.rank}</span>
+                    <h1 style="font-size: 2.5rem; margin-top: 12px;">${school.name}</h1>
+                    <p><i class="fas fa-map-marker-alt"></i> ${school.city}, ${school.country}</p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-number">#${school.rank}</div>
+                    <div>2026 U.S. News Ranking</div>
+                </div>
+            </div>
+            <div style="margin: 24px 0;">
+                <h3><i class="fas fa-info-circle"></i> Overview</h3>
+                <p style="margin-top: 12px; line-height: 1.6;">${school.description}</p>
+            </div>
+            <div style="margin-top: 32px;">
+                <a href="search.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Back to Rankings</a>
+                <a href="index.html" class="btn-secondary" style="margin-left: 12px;"><i class="fas fa-home"></i> Home</a>
+            </div>
+        `;
+    }
+    renderDetail();
+</script>
+</body>
+</html>
